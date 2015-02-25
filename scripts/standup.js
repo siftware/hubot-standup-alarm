@@ -74,6 +74,33 @@ module.exports = function(robot) {
         return false;
     }
 
+    // Compares current time + 10 minutes to the time of the standup
+    // to see if the warning should be fired.
+    function standupWarningShouldFire(standupTime) {
+        var now = new Date();
+        var minutes = WARNING_TIME;
+        var soon = new Date(oldDateObj.getTime() + minutes*60000);
+
+        var currentHours = soon.getHours();
+        var currentMinutes = soon.getMinutes();
+
+        var standupHours = standupTime.split(':')[0];
+        var standupMinutes = standupTime.split(':')[1];
+
+        try {
+            standupHours = parseInt(standupHours);
+            standupMinutes = parseInt(standupMinutes);
+        }
+        catch (_error) {
+            return false;
+        }
+
+        if (standupHours == currentHours && standupMinutes == currentMinutes) {
+            return true;
+        }
+        return false;
+    }
+
     // Returns all standups.
     function getStandups() {
         return robot.brain.get('standups') || [];
@@ -99,12 +126,21 @@ module.exports = function(robot) {
             if (standupShouldFire(standup.time)) {
                 doStandup(standup.room);
             }
+            if (standupWarningShouldFire(standup.time)) {
+                doStandupWarning(standup.room);
+            }
         });
     }
 
     // Fires the standup message.
     function doStandup(room) {
         var message = _.sample(STANDUP_MESSAGES);
+        robot.messageRoom(room, message);
+    }
+
+    // Fires the standup warning message.
+    function doStandupWarning(room) {
+        var message = _.sample(STANDUP_WARNINGS);
         robot.messageRoom(room, message);
     }
 
