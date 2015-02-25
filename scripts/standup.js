@@ -23,14 +23,25 @@ var _ = require('underscore');
 
 module.exports = function(robot) {
 
+    var WARNING_TIME = 10; // minutes
+
+    // Constants.
+    var STANDUP_WARNINGS = [
+        "@channel Get the kettle on, Standup in #{WARNING_TIME}",
+        "@channel This is your #{WARNING_TIME} minute standup warning",
+        "@channel You've got a standup in #{WARNING_TIME} minutes",
+        "@channel Time to put your day in order: Standup in #{WARNING_TIME} minutes",
+        "@channel Grab a brew, standup soon",
+    ];
+
     // Constants.
     var STANDUP_MESSAGES = [
-        "Standup time!",
-        "Time for standup, y'all.",
-        "It's standup time once again!",
-        "Get up, stand up (it's time for our standup)",
-        "Standup time. Get up, humans",
-        "Standup time! Now! Go go go!"
+        "@channel Standup time!",
+        "@channel Time for standup, y'all.",
+        "@channel It's standup time once again!",
+        "@channel Get up, stand up (it's time for our standup)",
+        "@channel Standup time. Get up, humans",
+        "@channel Another day, another standup",
     ];
 
     // Check for standups that need to be fired, once a minute
