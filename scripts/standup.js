@@ -79,7 +79,7 @@ module.exports = function(robot) {
     function standupWarningShouldFire(standupTime) {
         var now = new Date();
         var minutes = WARNING_TIME;
-        var soon = new Date(oldDateObj.getTime() + minutes*60000);
+        var soon = new Date(now.getTime() + minutes*60000);
 
         var currentHours = soon.getHours();
         var currentMinutes = soon.getMinutes();
