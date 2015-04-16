@@ -27,10 +27,10 @@ module.exports = function(robot) {
 
     // Constants.
     var STANDUP_WARNINGS = [
-        "@channel Get the kettle on, Standup in #{WARNING_TIME}",
-        "@channel This is your #{WARNING_TIME} minute standup warning",
-        "@channel You've got a standup in #{WARNING_TIME} minutes",
-        "@channel Time to put your day in order: Standup in #{WARNING_TIME} minutes",
+        "@channel Get the kettle on, Standup in 10",
+        "@channel This is your 10 minute standup warning",
+        "@channel You've got a standup in 10 minutes",
+        "@channel Time to put your day in order: Standup in 10 minutes",
         "@channel Grab a brew, standup soon",
     ];
 
