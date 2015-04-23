@@ -1,10 +1,5 @@
 // Description:
 //   Have Hubot remind you to do standups.
-//   hh:mm must be in the same timezone as the server Hubot is on. Probably UTC.
-//
-//   This is configured to work for Hipchat. You may need to change the 'create standup' command
-//   to match the adapter you're using.
-
 //
 // Commands:
 //   hubot standup help - See a help document explaining how to use.
@@ -13,6 +8,11 @@
 //   hubot list standups in every room - See all standups in every room
 //   hubot delete hh:mm standup - If you have a standup at hh:mm, deletes it
 //   hubot delete all standups - Deletes all standups for this room.
+//
+// Notes:
+//   hh:mm must be in the same timezone as the server Hubot is on. Probably UTC.
+//   This is configured to work for Hipchat. You may need to change the 'create standup' command
+//   to match the adapter you're using.
 //
 // Dependencies:
 //   underscore
