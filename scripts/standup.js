@@ -23,6 +23,7 @@ var _ = require('underscore');
 
 module.exports = function(robot) {
 
+    var STANDUP_URL = 'https://appear.in/siftware-standup';
     var WARNING_TIME = 10; // minutes
 
     // Constants.
@@ -134,7 +135,7 @@ module.exports = function(robot) {
 
     // Fires the standup message.
     function doStandup(room) {
-        var message = _.sample(STANDUP_MESSAGES);
+        var message = _.sample(STANDUP_MESSAGES + ' ' + STANDUP_URL);
         robot.messageRoom(room, message);
     }
 
